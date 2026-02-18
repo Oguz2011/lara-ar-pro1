@@ -45,26 +45,38 @@ body {
 </div>
 
 <script>
+    <script>
 let hedef = 700000;
 
-// Şimdilik manuel giriyoruz
-let ciro = 320000;
+let csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVbT6LOGyqCLieriT6raGk1ZEf5SrlvQcHaPi6bKzIk--XdsdgypBFkgRdYo3nJjPEroYFE5_oy72w/pub?gid=0&single=true&output=csv;
 
-let oran = Math.round((ciro/hedef)*100);
+fetch(csvUrl)
+  .then(response => response.text())
+  .then(data => {
+    let rows = data.split("\n");
+    let lastRow = rows[1].split(",");
+    let ciro = parseFloat(lastRow[1]);
 
-let percentEl = document.getElementById("percent");
-let ciroEl = document.getElementById("ciro");
+    let oran = Math.round((ciro/hedef)*100);
 
-percentEl.innerText = oran + "%";
-ciroEl.innerText = "Ciro: " + ciro.toLocaleString("tr-TR") + " TL";
+    let percentEl = document.getElementById("percent");
+    let ciroEl = document.getElementById("ciro");
 
-if(oran < 50){
-    percentEl.classList.add("red");
-} else if(oran < 80){
-    percentEl.classList.add("orange");
-} else {
-    percentEl.classList.add("green");
-}
+    percentEl.innerText = oran + "%";
+    ciroEl.innerText = "Ciro: " + ciro.toLocaleString("tr-TR") + " TL";
+
+    percentEl.classList.remove("red","orange","green");
+
+    if(oran < 50){
+        percentEl.classList.add("red");
+    } else if(oran < 80){
+        percentEl.classList.add("orange");
+    } else {
+        percentEl.classList.add("green");
+    }
+});
+</script>
+
 </script>
 
 </body>
