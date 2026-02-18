@@ -36,6 +36,30 @@ body {
 </style>
 </head>
 <body>
+<button onclick="konus()" style="
+position:fixed;
+bottom:30px;
+right:30px;
+padding:15px 25px;
+background:#00c896;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;">
+LARA Konuş
+</button>
+
+<script>
+function konus(){
+    let oran = document.getElementById("percent").innerText;
+    let msg = new SpeechSynthesisUtterance(
+        "Bugünkü hedef gerçekleşme oranı " + oran + ". Satış temposunu artırmalısın."
+    );
+    msg.lang = "tr-TR";
+    speechSynthesis.speak(msg);
+}
+</script>
 
 <div class="card">
     <h2>LARA AR PRO KPI</h2>
