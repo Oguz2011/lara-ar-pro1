@@ -45,19 +45,27 @@ body {
 </div>
 
 <script>
-    <script>
+<script>
 let hedef = 700000;
 
-let csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVbT6LOGyqCLieriT6raGk1ZEf5SrlvQcHaPi6bKzIk--XdsdgypBFkgRdYo3nJjPEroYFE5_oy72w/pub?output=csv;
+let csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVbT6LOgyqCLieriT6raGk1ZEf5SrlvQcHaPi6bKzlk-XdsdgypBFkgRdYo3nJPEROYFE5_oy72w/pub?output=csv";
 
 fetch(csvUrl)
   .then(response => response.text())
   .then(data => {
-    let rows = data.split("\n");
-    let lastRow = rows[1].split(",");
+
+    let rows = data.trim().split("\n");
+
+    // Son dolu satırı al
+    let lastRow = rows[rows.length - 1].split(",");
+
     let ciro = parseFloat(lastRow[1]);
 
-    let oran = Math.round((ciro/hedef)*100);
+    if (isNaN(ciro)) {
+        ciro = 0;
+    }
+
+    let oran = Math.round((ciro / hedef) * 100);
 
     let percentEl = document.getElementById("percent");
     let ciroEl = document.getElementById("ciro");
@@ -74,8 +82,10 @@ fetch(csvUrl)
     } else {
         percentEl.classList.add("green");
     }
+
 });
 </script>
+
 
 </script>
 
