@@ -1,4 +1,3 @@
-index.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +14,7 @@ body {
     align-items:center;
     height:100vh;
 }
+
 .card {
     background: rgba(255,255,255,0.1);
     padding:40px;
@@ -22,17 +22,50 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
     text-align:center;
+    width:400px;
 }
+
 .big {
     font-size:60px;
     font-weight:bold;
 }
+
+.red { color:#ff4d4d; }
+.orange { color:#ffa500; }
+.green { color:#00ff99; }
 </style>
 </head>
 <body>
+
 <div class="card">
-    <h1>LARA AR PRO KPI</h1>
-    <div class="big">Sistem Aktif</div>
+    <h2>LARA AR PRO KPI</h2>
+    <div id="percent" class="big">0%</div>
+    <p>Aylık Hedef: 700.000 TL</p>
+    <p id="ciro">Ciro: 0 TL</p>
 </div>
+
+<script>
+let hedef = 700000;
+
+// Şimdilik manuel giriyoruz
+let ciro = 320000;
+
+let oran = Math.round((ciro/hedef)*100);
+
+let percentEl = document.getElementById("percent");
+let ciroEl = document.getElementById("ciro");
+
+percentEl.innerText = oran + "%";
+ciroEl.innerText = "Ciro: " + ciro.toLocaleString("tr-TR") + " TL";
+
+if(oran < 50){
+    percentEl.classList.add("red");
+} else if(oran < 80){
+    percentEl.classList.add("orange");
+} else {
+    percentEl.classList.add("green");
+}
+</script>
+
 </body>
 </html>
