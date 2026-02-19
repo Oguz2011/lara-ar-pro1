@@ -228,6 +228,23 @@ avatar.addEventListener("click", function () {
         panel.style.display = "block";
     }
 });
+  <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const avatar = document.getElementById("lara-avatar");
+  const panel = document.getElementById("lara-panel");
+
+  avatar.addEventListener("click", function() {
+    if(panel.style.display === "block"){
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+    }
+  });
+
+});
+</script>
+
 </script>
 <!-- LARA PANEL -->
 <div id="lara-panel" style="
