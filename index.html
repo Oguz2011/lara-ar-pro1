@@ -193,6 +193,18 @@ fetch(csvUrl)
 <div id="lara-avatar">
   <div class="avatar-circle">L</div>
 </div>
+<script>
+const avatar = document.getElementById("lara-avatar");
+
+avatar.addEventListener("click", function() {
+    const panel = document.getElementById("lara-panel");
+    if(panel.style.display === "block"){
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+    }
+});
+</script>
 
 </body>
 </html>
