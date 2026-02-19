@@ -205,6 +205,30 @@ avatar.addEventListener("click", function() {
     }
 });
 </script>
+<!-- PANEL -->
+<div id="lara-panel" style="display:none; position:fixed; bottom:130px; right:30px; background:white; color:black; padding:15px; border-radius:15px; width:250px; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+    <b>LARA AI Asistan</b>
+    <p>Merhaba 👋 KPI analizlerinizi yorumlayabilirim.</p>
+</div>
+
+<!-- AVATAR -->
+<div id="lara-avatar">
+    <div class="avatar-circle">L</div>
+</div>
+
+<script>
+const avatar = document.getElementById("lara-avatar");
+
+avatar.addEventListener("click", function () {
+    const panel = document.getElementById("lara-panel");
+
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+    }
+});
+</script>
 
 </body>
 </html>
